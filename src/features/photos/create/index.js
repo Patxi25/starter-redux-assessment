@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addPhoto } from "../photos/photos.slice.js";
+import { addPhoto } from "../../photos/photos.slice.js";
 
 import "./create.css";
 
