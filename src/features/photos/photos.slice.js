@@ -10,6 +10,9 @@ const options = {
   name: "photos",
   initialState,
   reducers: {
+    addPhoto: (state, action) => {
+      state.photos.unshift(action.payload);
+    },
     // Task 1: Create an `addPhoto()` case reducer that adds a photo to state.photos.
     // Task 1 Hint: You can use state.photos.unshift()
     // `unshift()` documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift
