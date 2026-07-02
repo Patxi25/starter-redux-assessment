@@ -23,3 +23,7 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Runs the test suites.
+
+## AI Declaration
+
+I did not use any AI tools for this assignment.
