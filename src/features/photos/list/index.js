@@ -2,15 +2,14 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   removePhoto,
   selectAllPhotos,
-  // Task 13: Import the `selectFilteredPhotos()` selector from the photos slice
+  selectFilteredPhotos,
   // Task 24: Import the `toggleFavorite()` action creator from the photos slice
   // Task 28: Import the `editPhotoCaption()` action creator from the photos slice
 } from "../photos.slice";
 import "./list.css";
 
 export default function PhotosList() {
-  // Task 14: Call `useSelector()` below with `selectFilteredPhotos` instead of `selectAllPhotos`
-  const photos = useSelector(selectAllPhotos);
+  const photos = useSelector(selectFilteredPhotos);
   const dispatch = useDispatch();
 
   function handleDeleteButtonClick(id) {
