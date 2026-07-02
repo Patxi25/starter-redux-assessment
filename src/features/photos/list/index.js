@@ -14,7 +14,7 @@ export default function PhotosList() {
   const dispatch = useDispatch();
 
   function handleDeleteButtonClick(id) {
-    // Task 9: Dispatch the `removePhoto()` action creator, passing in the id
+    dispatch(removePhoto(id));
   }
 
   // Task 25: Create a `handleToggleFavorite()` function that dispatches the `toggleFavorite()` action with the photo id
