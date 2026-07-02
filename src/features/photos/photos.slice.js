@@ -38,5 +38,9 @@ export default photosSlice.reducer;
 
 export const selectAllPhotos = (state) => state.photos.photos;
 export const selectFilteredPhotos = (state) => {
-  // Task 12: Complete `selectFilteredPhotos()` selector to return a filtered list of photos whose captions match the user's search term
+  const searchTerm = selectSearchTerm(state).toLowerCase();
+
+  return selectAllPhotos(state).filter((photo) =>
+    photo.caption.toLowerCase().includes(searchTerm),
+  );
 };
