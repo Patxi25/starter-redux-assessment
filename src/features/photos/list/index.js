@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
   removePhoto,
-  selectAllPhotos,
   selectFilteredPhotos,
   toggleFavorite,
   editPhotoCaption,

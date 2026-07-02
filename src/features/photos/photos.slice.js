@@ -45,7 +45,7 @@ export default photosSlice.reducer;
 
 export const selectAllPhotos = (state) => state.photos.photos;
 export const selectFilteredPhotos = (state) => {
-  const searchTerm = selectSearchTerm(state).toLowerCase();
+  const searchTerm = (selectSearchTerm(state) || "").toLowerCase();
 
   return selectAllPhotos(state).filter((photo) =>
     photo.caption.toLowerCase().includes(searchTerm),

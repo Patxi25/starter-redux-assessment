@@ -17,11 +17,16 @@ export default function CreatePhoto() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const trimmedCaption = formData.caption.trim();
+    const trimmedUrl = formData.imageUrl.trim();
+
+    if (!trimmedCaption || !trimmedUrl) return;
+
     dispatch(
       addPhoto({
-        id: crypto.randomUUID(),
-        imageUrl: formData.imageUrl,
+        id: Date.now().toString(),
         caption: formData.caption,
+        imageUrl: formData.imageUrl,
         isFavorite: false,
       }),
     );
