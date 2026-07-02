@@ -19,20 +19,27 @@ const options = {
         1,
       );
     },
-    // Task 22: Create a `toggleFavorite()` case reducer that toggles the isFavorite property of a photo
-    // Task 22 Hint: Find the photo by id in state.photos and toggle its isFavorite boolean value
-    // The action payload will contain the id of the photo to toggle
+    toggleFavorite: (state, action) => {
+      const photo = state.photos.find((p) => p.id === action.payload);
+      if (photo) {
+        photo.isFavorite = !photo.isFavorite;
+      }
+    },
+    editPhotoCaption: (state, action) => {
+      const { id, newCaption } = action.payload;
+      const photo = state.photos.find((p) => p.id === id);
 
-    // Task 26: Create an `editPhotoCaption()` case reducer that updates the caption of a photo
-    // Task 26 Hint: Find the photo by id in state.photos and update its caption property
-    // The action payload will contain an object with { id, newCaption }
+      if (photo) {
+        photo.caption = newCaption;
+      }
+    },
   },
 };
 
 const photosSlice = createSlice(options);
 
-// Task 22 & 26: Export the `toggleFavorite()` and `editPhotoCaption()` action creators once you implement their reducers above
-export const { addPhoto, removePhoto } = photosSlice.actions;
+export const { addPhoto, removePhoto, toggleFavorite, editPhotoCaption } =
+  photosSlice.actions;
 
 export default photosSlice.reducer;
 

@@ -3,8 +3,8 @@ import {
   removePhoto,
   selectAllPhotos,
   selectFilteredPhotos,
-  // Task 24: Import the `toggleFavorite()` action creator from the photos slice
-  // Task 28: Import the `editPhotoCaption()` action creator from the photos slice
+  toggleFavorite,
+  editPhotoCaption,
 } from "../photos.slice";
 import "./list.css";
 
@@ -16,23 +16,41 @@ export default function PhotosList() {
     dispatch(removePhoto(id));
   }
 
-  // Task 25: Create a `handleToggleFavorite()` function that dispatches the `toggleFavorite()` action with the photo id
+  function handleToggleFavorite(id) {
+    dispatch(toggleFavorite(id));
+  }
 
-  // Task 29: Create a `handleEditCaption()` function that dispatches the `editPhotoCaption()` action with id and newCaption
+  function handleEditCaption(id) {
+    const newCaption = window.prompt("Enter new caption:");
+    if (newCaption) {
+      dispatch(editPhotoCaption({ id, newCaption }));
+    }
+  }
 
   const photosListItems = photos.map(({ id, caption, imageUrl }) => (
     <li key={id}>
       <img alt={caption} src={imageUrl} />
       <div>
         <p>{caption}</p>
-        {/* Task 23: Add a button to toggle favorite status with data-testid={`${id}-favorite-button`} and call handleToggleFavorite() */}
+        <button
+          data-testid={`${id}-favorite-button`}
+          onClick={() => handleToggleFavorite(id)}
+        >
+          Favorite
+        </button>
+
         <button
           data-testid={`${caption}-button`}
           onClick={() => handleDeleteButtonClick(id)}
         >
           Delete
         </button>
-        {/* Task 27: Add a button to edit caption with data-testid={`${id}-edit-button`} - for now use window.prompt() to get new caption and call handleEditCaption() */}
+        <button
+          data-testid={`${id}-edit-button`}
+          onClick={() => handleEditCaption(id)}
+        >
+          Edit
+        </button>
       </div>
     </li>
   ));
