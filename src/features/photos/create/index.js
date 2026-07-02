@@ -17,7 +17,15 @@ export default function CreatePhoto() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addPhoto(formData.imageUrl));
+    dispatch(
+      addPhoto({
+        id: crypto.randomUUID(),
+        imageUrl: formData.imageUrl,
+        caption: formData.caption,
+        isFavorite: false,
+      }),
+    );
+
     setFormData({ imageUrl: "", caption: "" });
   }
 
