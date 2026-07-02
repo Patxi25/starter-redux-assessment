@@ -27,33 +27,37 @@ export default function PhotosList() {
     }
   }
 
-  const photosListItems = photos.map(({ id, caption, imageUrl }) => (
-    <li key={id}>
-      <img alt={caption} src={imageUrl} />
-      <div>
-        <p>{caption}</p>
-        <button
-          data-testid={`${id}-favorite-button`}
-          onClick={() => handleToggleFavorite(id)}
-        >
-          Favorite
-        </button>
+  const photosListItems = photos.map(
+    ({ id, caption, imageUrl, isFavorite }) => (
+      <li key={id}>
+        <img alt={caption} src={imageUrl} />
+        <div>
+          <p>{caption}</p>
 
-        <button
-          data-testid={`${caption}-button`}
-          onClick={() => handleDeleteButtonClick(id)}
-        >
-          Delete
-        </button>
-        <button
-          data-testid={`${id}-edit-button`}
-          onClick={() => handleEditCaption(id)}
-        >
-          Edit
-        </button>
-      </div>
-    </li>
-  ));
+          <button
+            data-testid={`${id}-favorite-button`}
+            onClick={() => handleToggleFavorite(id)}
+          >
+            {isFavorite ? "Favorited" : "Favorite"}
+          </button>
+
+          <button
+            data-testid={`${caption}-button`}
+            onClick={() => handleDeleteButtonClick(id)}
+          >
+            Delete
+          </button>
+
+          <button
+            data-testid={`${id}-edit-button`}
+            onClick={() => handleEditCaption(id)}
+          >
+            Edit
+          </button>
+        </div>
+      </li>
+    ),
+  );
 
   return photosListItems.length > 0 ? (
     <ul>{photosListItems}</ul>
